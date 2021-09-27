@@ -24,9 +24,18 @@ namespace StringKataCalc2021
 
                 delimiter.Add(Convert.ToChar(newDelimeter));
             }
-            
-            var result = numberString.Split(delimiter.ToArray())
-                        .Select(s => int.Parse(s)).Sum();
+
+            var numberList = numberString.Split(delimiter.ToArray())
+                        .Select(s => int.Parse(s));
+
+            var negatives = numberList.Where(n => n < 0);
+
+            if (negatives.Any())
+            {
+                string negativesString = String.Join(',', negatives.Select(n => n.ToString()));
+                throw new Exception($"Negatives not allowed: {negativesString}");
+            }
+            var result = numberList.Sum();
 
             return result;
         }
