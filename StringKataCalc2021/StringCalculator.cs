@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace StringKataCalc2021
 {
@@ -8,7 +9,10 @@ namespace StringKataCalc2021
         {
             if (String.IsNullOrEmpty(numbers)) return 0;
 
-            return int.Parse(numbers);
+            var result = numbers.Split(',')
+                        .Select(s => int.Parse(s)).Sum();
+
+            return result;
         }
     }
 }
