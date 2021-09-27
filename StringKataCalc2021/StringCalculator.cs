@@ -35,7 +35,7 @@ namespace StringKataCalc2021
                 string negativesString = String.Join(',', negatives.Select(n => n.ToString()));
                 throw new Exception($"Negatives not allowed: {negativesString}");
             }
-            var result = numberList.Sum();
+            var result = numberList.Where(n => n <= 1000).Sum();
 
             return result;
         }
