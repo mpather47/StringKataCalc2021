@@ -47,8 +47,8 @@ namespace StringKataCalc2021
 
         [Theory]
         [InlineData("1\n2,3", 6)]
-        [InlineData("1\n2,\n3", 6)]
-        [InlineData("1,2,\n3", 6)]
+        [InlineData("1\n2\n3", 6)]
+        [InlineData("1,2\n3", 6)]
         public void ReturnsSumGivenStringThreeCommaOrNewlineSeperatedNumbers(string numbers, int expectedResult)
         {
             var result = _calculator.Add(numbers);
@@ -56,5 +56,14 @@ namespace StringKataCalc2021
             Assert.Equal(expectedResult, result);
         }
 
+
+        [Theory]
+        [InlineData("//;\n1;2;3", 6)]
+        public void ReturnsSumGivenStringCustomDelimeter(string numbers, int expectedResult)
+        {
+            var result = _calculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+        }
     }
 }
