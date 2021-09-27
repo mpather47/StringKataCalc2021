@@ -9,7 +9,8 @@ namespace StringKataCalc2021
         {
             if (String.IsNullOrEmpty(numbers)) return 0;
 
-            var result = numbers.Split(',')
+            var delimiter = new [] { ',', '\n' };
+            var result = numbers.Split(delimiter)
                         .Select(s => int.Parse(s)).Sum();
 
             return result;
